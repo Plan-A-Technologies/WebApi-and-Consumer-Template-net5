@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using PlayerSoft.Contracts.Contracts;
 
 namespace PlayerSoft.Template.Bll.Models
 {
-    public class Player
+    public class Player : IPlayer
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
@@ -23,6 +24,6 @@ namespace PlayerSoft.Template.Bll.Models
         public bool PlayerVip { get; set; }
         public bool PlayerActive { get; set; }
 
-        public IEnumerable<PlayerPhone> Phones { get; set; }
+        public IEnumerable<IPlayerPhone> Phones { get; set; }
     }
 }

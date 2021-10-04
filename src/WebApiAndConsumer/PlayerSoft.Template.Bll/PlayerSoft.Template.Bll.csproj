@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\MassTransitContracts\PlayerSoft.Contracts\PlayerSoft.Contracts.csproj" />
     <ProjectReference Include="..\PlayerSoft.Template.Dal\PlayerSoft.Template.Dal.csproj" />
   </ItemGroup>
 

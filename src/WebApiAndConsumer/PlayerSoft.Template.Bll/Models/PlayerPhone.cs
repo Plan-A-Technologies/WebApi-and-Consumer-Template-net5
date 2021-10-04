@@ -1,8 +1,9 @@
 ﻿using System;
+using PlayerSoft.Contracts.Contracts;
 
 namespace PlayerSoft.Template.Bll.Models
 {
-    public class PlayerPhone
+    public class PlayerPhone : IPlayerPhone
     {
         public Guid Id { get; set; }
         public string Type { get; set; }
