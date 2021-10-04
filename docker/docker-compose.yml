@@ -1,0 +1,47 @@
+version: '3.5'
+
+services:
+  ps-sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: ps-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=!Qqq12345
+      - MSSQL_PID=Express
+    ports:
+      - '1433:1433'
+      
+  ps-elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    container_name: ps-elasticsearch    
+    environment:
+      - discovery.type=single-node
+#      - bootstrap.memory_lock=true
+#      - "ES_JAVA_OPTS=-Xms1024M -Xmx1024M"
+#      - network.host=_eth0_
+    volumes:
+      - ../esdata:/usr/share/elasticsearch/data
+      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./config/users:/usr/share/elasticsearch/config/users
+      - ./config/users_roles:/usr/share/elasticsearch/config/users_roles
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  ps-kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.0
+    container_name: ps-kibana
+    environment:
+      SERVER_NAME: localhost
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    volumes:
+      - ./config/kibana.yml:/usr/share/kibana/config/kibana.yml
+
+  rabbitmq:
+        image: rabbitmq:latest
+        container_name: ps-rabbitmq
+        ports:
+            - "15672:15672"
+            - "5672:5672"
