@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerSoft.Template.Worker"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerSoft.Contracts", "..\MassTransitContracts\PlayerSoft.Contracts\PlayerSoft.Contracts.csproj", "{5A3DB420-DBEB-492B-9955-A4A22A5EC434}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E0D6F559-39CA-432A-BF8D-FA072CB0B4D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerSoft.Samples.Sender", "PlayerSoft.Samples.Sender\PlayerSoft.Samples.Sender.csproj", "{244FA3AC-E101-4B69-B7C2-0182FC93F653}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +43,16 @@ Global
 		{5A3DB420-DBEB-492B-9955-A4A22A5EC434}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A3DB420-DBEB-492B-9955-A4A22A5EC434}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A3DB420-DBEB-492B-9955-A4A22A5EC434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{244FA3AC-E101-4B69-B7C2-0182FC93F653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{244FA3AC-E101-4B69-B7C2-0182FC93F653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{244FA3AC-E101-4B69-B7C2-0182FC93F653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{244FA3AC-E101-4B69-B7C2-0182FC93F653}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{244FA3AC-E101-4B69-B7C2-0182FC93F653} = {E0D6F559-39CA-432A-BF8D-FA072CB0B4D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {916C3586-FF26-4A13-A428-BE8C2ACCB8CB}

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>dotnet-PlayerSoft.Samples.Sender-AF2CE673-7F3A-49BE-A162-C46E3593984B</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.2.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MassTransitContracts\PlayerSoft.Contracts\PlayerSoft.Contracts.csproj" />
+    <ProjectReference Include="..\PlayerSoft.Template.Bll\PlayerSoft.Template.Bll.csproj" />
+  </ItemGroup>
+</Project>

@@ -8,20 +8,33 @@ using Microsoft.Extensions.Logging;
 using PlayerSoft.Contracts.Contracts;
 using PlayerSoft.Template.Bll.Models;
 
-namespace PlayerSoft.Template.Worker
+namespace PlayerSoft.Samples.Sender
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
         private IRequestClient<ICreatePlayer> _createAppointmentClient;
         readonly IServiceProvider _serviceProvider;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="serviceProvider"></param>
         public Worker(ILogger<Worker> logger, IServiceProvider serviceProvider)
         {
             _logger = logger;
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stoppingToken"></param>
+        /// <returns></returns>
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             using var scope = _serviceProvider.CreateScope();

@@ -9,10 +9,12 @@ using PlayerSoft.Template.Dal.EF;
 
 namespace PlayerSoft.Template.Dal.Migrations
 {
+    /// <inheritdoc />
     [DbContext(typeof(PlayerSoftContext))]
     [Migration("20211004131351_InitialCreate")]
     partial class InitialCreate
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

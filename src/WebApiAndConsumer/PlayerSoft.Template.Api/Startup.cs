@@ -11,17 +11,31 @@ using PlayerSoft.Template.Dal.EF;
 
 namespace PlayerSoft.Template.Api
 {
+    /// <summary>
+    /// The startup class.
+    /// </summary>
     public class Startup
     {
         private const string ConnectionStringName = "PlayerSoftConnection";
 
+        /// <summary>
+        /// .ctor
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Configuration
+        /// </summary>
         public IConfiguration Configuration { get; }
 
+        /// <summary>
+        /// Configure services
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             var dbConnectionString = Configuration.GetConnectionString(ConnectionStringName);
@@ -40,6 +54,11 @@ namespace PlayerSoft.Template.Api
             });
         }
 
+        /// <summary>
+        /// Configure
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

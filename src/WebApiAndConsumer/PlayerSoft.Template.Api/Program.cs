@@ -10,8 +10,14 @@ using Serilog;
 
 namespace PlayerSoft.Template.Api
 {
+    /// <summary>
+    /// The program class.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Configuration
+        /// </summary>
         public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -19,6 +25,11 @@ namespace PlayerSoft.Template.Api
             .AddEnvironmentVariables()
             .Build();
 
+        /// <summary>
+        /// The main
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static async Task Main(string[] args)
         {
             var outputTemplate =
@@ -48,6 +59,7 @@ namespace PlayerSoft.Template.Api
                     catch (Exception ex)
                     {
                         Log.Error(ex, "An error occurred while migrating the database");
+                        throw;
                     }
                 }
 
@@ -65,6 +77,11 @@ namespace PlayerSoft.Template.Api
             }
         }
 
+        /// <summary>
+        /// CreateHostBuilder
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>

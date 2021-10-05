@@ -4,8 +4,14 @@ using PlayerSoft.Template.Bll.Models;
 
 namespace PlayerSoft.Template.Bll.Mappings
 {
+    /// <summary>
+    /// Player automapper profile.
+    /// </summary>
     public class PlayerProfile : Profile
     {
+        /// <summary>
+        /// .ctor
+        /// </summary>
         public PlayerProfile()
         {
             CreateMap<Dal.Entities.Player, Player>();

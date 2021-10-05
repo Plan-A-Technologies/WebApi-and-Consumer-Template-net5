@@ -8,6 +8,9 @@ using PlayerSoft.Template.Bll.Models;
 
 namespace PlayerSoft.Template.Api.Controllers
 {
+    /// <summary>
+    /// The player controller.
+    /// </summary>
     [Route("players")]
     [ApiController]
     public class PlayerController : ControllerBase
@@ -15,6 +18,11 @@ namespace PlayerSoft.Template.Api.Controllers
         private readonly IPlayerService _playerService;
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// .ctor
+        /// </summary>
+        /// <param name="playerService">The player service.</param>
+        /// <param name="mapper">The automapper.</param>
         public PlayerController(IPlayerService playerService, IMapper mapper)
         {
             _playerService = playerService ?? throw new ArgumentNullException(nameof(playerService));
