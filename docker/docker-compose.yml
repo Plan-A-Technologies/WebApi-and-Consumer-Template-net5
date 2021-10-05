@@ -1,4 +1,4 @@
-version: '3.5'
+version: '3.8'
 
 services:
   ps-sqlserver:
@@ -16,11 +16,10 @@ services:
     container_name: ps-elasticsearch    
     environment:
       - discovery.type=single-node
-#      - bootstrap.memory_lock=true
-#      - "ES_JAVA_OPTS=-Xms1024M -Xmx1024M"
-#      - network.host=_eth0_
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1024M -Xmx1024M"
+      - network.host=_eth0_
     volumes:
-      - ../esdata:/usr/share/elasticsearch/data
       - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./config/users:/usr/share/elasticsearch/config/users
       - ./config/users_roles:/usr/share/elasticsearch/config/users_roles
@@ -39,7 +38,7 @@ services:
     volumes:
       - ./config/kibana.yml:/usr/share/kibana/config/kibana.yml
 
-  rabbitmq:
+  ps-rabbitmq:
         image: rabbitmq:latest
         container_name: ps-rabbitmq
         ports:

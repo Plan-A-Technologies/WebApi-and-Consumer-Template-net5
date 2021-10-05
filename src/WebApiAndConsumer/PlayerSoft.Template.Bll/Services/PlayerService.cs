@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using PlayerSoft.Contracts.Contracts;
 using PlayerSoft.Template.Bll.Contracts;
 using PlayerSoft.Template.Bll.Models;
 using PlayerSoft.Template.Dal.EF;
@@ -20,7 +21,7 @@ namespace PlayerSoft.Template.Bll.Services
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<Player> CreatePlayer(Player player)
+        public async Task<IPlayer> CreatePlayer(IPlayer player)
         {
             var newPlayer = _mapper.Map<Dal.Entities.Player>(player);
 
@@ -41,7 +42,7 @@ namespace PlayerSoft.Template.Bll.Services
             return _mapper.Map<Player>(newPlayer);
         }
 
-        public async Task<Player> GetPlayer(Guid playerId)
+        public async Task<IPlayer> GetPlayer(Guid playerId)
         {
             var player = await _context.Players
                 .Include(p => p.Phones)

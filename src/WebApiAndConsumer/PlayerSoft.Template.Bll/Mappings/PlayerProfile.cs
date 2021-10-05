@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using PlayerSoft.Contracts.Contracts;
 using PlayerSoft.Template.Bll.Models;
 
 namespace PlayerSoft.Template.Bll.Mappings
@@ -9,6 +10,8 @@ namespace PlayerSoft.Template.Bll.Mappings
         {
             CreateMap<Dal.Entities.Player, Player>();
             CreateMap<Player, Dal.Entities.Player>();
+            CreateMap<Dal.Entities.Player, IPlayer>();
+            CreateMap<IPlayer, Dal.Entities.Player>();
             CreateMap<Dal.Entities.PlayerPhone, PlayerPhone>();
             CreateMap<PlayerPhone, Dal.Entities.PlayerPhone>();
         }

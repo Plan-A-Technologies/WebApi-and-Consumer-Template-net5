@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using PlayerSoft.Contracts.Contracts;
-using PlayerSoft.Template.Bll.Models;
 
 namespace PlayerSoft.Template.Bll.Contracts
 {
