@@ -42,7 +42,7 @@ namespace Template.Samples.Producer
                         });
                     });
 
-                    services.AddHostedService<Worker>();
+                    services.AddHostedService<Producer>();
                 });
     }
 }

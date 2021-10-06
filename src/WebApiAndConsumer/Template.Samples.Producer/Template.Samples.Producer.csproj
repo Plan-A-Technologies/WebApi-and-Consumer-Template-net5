@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>dotnet-PlayerSoft.Samples.Sender-AF2CE673-7F3A-49BE-A162-C46E3593984B</UserSecretsId>
     <LangVersion>default</LangVersion>
     <PackageId>Template.Samples.Producer</PackageId>
   </PropertyGroup>

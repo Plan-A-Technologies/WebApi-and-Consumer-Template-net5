@@ -1,6 +1,6 @@
 ﻿{
   "profiles": {
-    "PlayerSoft.Samples.Sender": {
+    "Samples.Producer": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "environmentVariables": {

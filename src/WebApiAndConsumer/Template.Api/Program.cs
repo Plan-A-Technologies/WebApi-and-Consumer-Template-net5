@@ -34,6 +34,7 @@ namespace Template.Api
         /// <returns></returns>
         public static async Task Main(string[] args)
         {
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext}] [{EventId}] {Message:lj}{NewLine}{Exception}";
             
             Log.Logger = new LoggerConfiguration()

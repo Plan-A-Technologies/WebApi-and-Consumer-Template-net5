@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>dotnet-PlayerSoft.Template.Worker-6EC4140E-AB8C-4799-9E1C-69D64500A999</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
@@ -24,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MassTransitContracts\PlayerSoft.Contracts\PlayerSoft.Contracts.csproj" />
     <ProjectReference Include="..\Template.Bll\Template.Bll.csproj" />
   </ItemGroup>
 </Project>

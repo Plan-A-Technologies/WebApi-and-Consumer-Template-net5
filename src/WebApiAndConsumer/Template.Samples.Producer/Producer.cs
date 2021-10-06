@@ -16,9 +16,9 @@ namespace Template.Samples.Producer
     /// The worker for checking consumers
     /// </summary>
     /// <seealso cref="Microsoft.Extensions.Hosting.BackgroundService" />
-    public class Worker : BackgroundService
+    public class Producer : BackgroundService
     {
-        private readonly ILogger<Worker> _logger;
+        private readonly ILogger<Producer> _logger;
         private IRequestClient<IPlayerMessage> _createAppointmentClient;
         readonly IServiceProvider _serviceProvider;
 
@@ -28,7 +28,7 @@ namespace Template.Samples.Producer
         /// <param name="logger">The logger.</param>
         /// <param name="serviceProvider">The service provider.</param>
         /// <exception cref="System.ArgumentNullException">serviceProvider</exception>
-        public Worker(ILogger<Worker> logger, IServiceProvider serviceProvider)
+        public Producer(ILogger<Producer> logger, IServiceProvider serviceProvider)
         {
             _logger = logger;
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
@@ -45,7 +45,7 @@ namespace Template.Samples.Producer
 
             _createAppointmentClient = scope.ServiceProvider.GetRequiredService<IRequestClient<IPlayerMessage>>();
 
-            await Task.Delay(1000, stoppingToken);
+            await Task.Delay(10000, stoppingToken);
 
             var pl = await _createAppointmentClient.GetResponse<IPlayerDto>(new PlayerMessage
             {

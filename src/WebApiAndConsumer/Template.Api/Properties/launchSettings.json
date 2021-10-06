@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PlayerSoft.Template.Api": {
+    "Template.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

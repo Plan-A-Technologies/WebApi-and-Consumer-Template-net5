@@ -9,12 +9,12 @@ COPY ["Template.Consumer/Template.Consumer.csproj", "Template.Consumer/"]
 RUN dotnet restore "Template.Consumer/Template.Consumer.csproj"
 COPY . .
 WORKDIR "/src/Template.Worker"
-RUN dotnet build "PlayerSoft.Template.Worker.csproj" -c Release -o /app/build
+RUN dotnet build "Template.Worker.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "PlayerSoft.Template.Worker.csproj" -c Release -o /app/publish
+RUN dotnet publish "Template.Worker.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "PlayerSoft.Template.Worker.dll"]
+ENTRYPOINT ["dotnet", "Template.Worker.dll"]
