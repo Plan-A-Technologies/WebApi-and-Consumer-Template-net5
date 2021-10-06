@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerSoft.Template.Bll", "PlayerSoft.Template.Bll\PlayerSoft.Template.Bll.csproj", "{EE884D63-9003-44F7-97E7-EDE1FF6226C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Bll", "Template.Bll\Template.Bll.csproj", "{EE884D63-9003-44F7-97E7-EDE1FF6226C6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerSoft.Template.Dal", "PlayerSoft.Template.Dal\PlayerSoft.Template.Dal.csproj", "{6E471968-6030-499D-8359-2A70376CA52B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Dal", "Template.Dal\Template.Dal.csproj", "{6E471968-6030-499D-8359-2A70376CA52B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerSoft.Template.Api", "PlayerSoft.Template.Api\PlayerSoft.Template.Api.csproj", "{C95EC1AA-4526-4888-9653-4193A38A0123}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Api", "Template.Api\Template.Api.csproj", "{C95EC1AA-4526-4888-9653-4193A38A0123}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerSoft.Template.Worker", "PlayerSoft.Template.Worker\PlayerSoft.Template.Worker.csproj", "{C59540DC-2088-4777-913F-4963CFC7573D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerSoft.Contracts", "..\MassTransitContracts\PlayerSoft.Contracts\PlayerSoft.Contracts.csproj", "{5A3DB420-DBEB-492B-9955-A4A22A5EC434}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Consumer", "Template.Consumer\Template.Consumer.csproj", "{C59540DC-2088-4777-913F-4963CFC7573D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E0D6F559-39CA-432A-BF8D-FA072CB0B4D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerSoft.Samples.Sender", "PlayerSoft.Samples.Sender\PlayerSoft.Samples.Sender.csproj", "{244FA3AC-E101-4B69-B7C2-0182FC93F653}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Samples.Producer", "Template.Samples.Producer\Template.Samples.Producer.csproj", "{244FA3AC-E101-4B69-B7C2-0182FC93F653}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Shared", "..\Template.Shared\Template.Shared.csproj", "{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,14 +39,14 @@ Global
 		{C59540DC-2088-4777-913F-4963CFC7573D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C59540DC-2088-4777-913F-4963CFC7573D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C59540DC-2088-4777-913F-4963CFC7573D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A3DB420-DBEB-492B-9955-A4A22A5EC434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A3DB420-DBEB-492B-9955-A4A22A5EC434}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A3DB420-DBEB-492B-9955-A4A22A5EC434}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A3DB420-DBEB-492B-9955-A4A22A5EC434}.Release|Any CPU.Build.0 = Release|Any CPU
 		{244FA3AC-E101-4B69-B7C2-0182FC93F653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{244FA3AC-E101-4B69-B7C2-0182FC93F653}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{244FA3AC-E101-4B69-B7C2-0182FC93F653}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{244FA3AC-E101-4B69-B7C2-0182FC93F653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
