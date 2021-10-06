@@ -1,11 +1,13 @@
 using System;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Serilog.Sinks.Elasticsearch;
 using Template.Bll.Services.Abstractions;
 
 namespace Template.Api
@@ -39,6 +41,7 @@ namespace Template.Api
                 .Enrich.FromLogContext()
                 .WriteTo.Console(outputTemplate: outputTemplate)
                 .WriteTo.File(path: "/Logs/log-.txt", outputTemplate: outputTemplate, rollingInterval: RollingInterval.Day)
+                .WriteTo.Elasticsearch(ConfigureElasticSink(Configuration, environment))
                 .CreateLogger();
 
             try
@@ -88,5 +91,14 @@ namespace Template.Api
                     webBuilder.UseStartup<Startup>();
                 })
                 .UseSerilog();
+
+        private static ElasticsearchSinkOptions ConfigureElasticSink(IConfiguration configuration, string environment)
+        {
+            return new(new Uri(configuration["ElasticConfiguration:Uri"]))
+            {
+                AutoRegisterTemplate = true,
+                IndexFormat = $"{Assembly.GetExecutingAssembly().GetName().Name?.ToLower().Replace(".", "-")}-{environment?.ToLower().Replace(".", "-")}-{DateTime.UtcNow:yyyy-MM}"
+            };
+        }
     }
 }
