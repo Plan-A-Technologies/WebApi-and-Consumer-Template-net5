@@ -12,6 +12,9 @@ namespace Template.Consumer.Consumers
     /// </summary>
     public class PlayerConsumer : IConsumer<IPlayerMessage>
     {
+        /// <summary>
+        /// The _scope factory.
+        /// </summary>
         private readonly IServiceScopeFactory _scopeFactory;
 
         /// <summary>
