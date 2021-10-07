@@ -14,14 +14,14 @@ namespace Template.Test
     public class SampleTest
     {
         private Mock<AppDbContext> _contextMock;
-        private Mock<DbSet<Player>> _mockDbSet;
+        private Mock<DbSet<Player>> _dbSetMock;
         private Mock<IMapper> _mapperMock;
 
         [TestInitialize]
         public void Initialize()
         {
             _contextMock = new Mock<AppDbContext>();
-            _mockDbSet = new Mock<DbSet<Player>>();
+            _dbSetMock = new Mock<DbSet<Player>>();
             _mapperMock = new Mock<IMapper>();
 
         }
@@ -30,6 +30,7 @@ namespace Template.Test
         public void Cleanup()
         {
             _contextMock = null;
+            _dbSetMock = null;
             _mapperMock = null;
         }
 
@@ -60,7 +61,7 @@ namespace Template.Test
 
             _contextMock
                 .Setup(f => f.Players)
-                .Returns(_mockDbSet.Object);
+                .Returns(_dbSetMock.Object);
 
             var playerService = new PlayerService(_contextMock.Object, _mapperMock.Object);
 
