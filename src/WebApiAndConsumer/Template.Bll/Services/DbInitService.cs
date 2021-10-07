@@ -10,7 +10,13 @@ namespace Template.Bll.Services
     /// <inheritdoc/>
     public class DbInitService : IDbInitService
     {
+        /// <summary>
+        /// The _context.
+        /// </summary>
         private readonly AppDbContext _context;
+        /// <summary>
+        /// The _logger.
+        /// </summary>
         private readonly ILogger<DbInitService> _logger;
 
         /// <summary>

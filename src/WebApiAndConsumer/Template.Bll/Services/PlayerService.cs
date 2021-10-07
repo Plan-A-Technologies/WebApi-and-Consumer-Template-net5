@@ -14,7 +14,13 @@ namespace Template.Bll.Services
     /// <inheritdoc/>
     public class PlayerService : IPlayerService
     {
+        /// <summary>
+        /// The _context.
+        /// </summary>
         private readonly AppDbContext _context;
+        /// <summary>
+        /// The _mapper.
+        /// </summary>
         private readonly IMapper _mapper;
 
         /// <summary>
@@ -55,7 +61,7 @@ namespace Template.Bll.Services
         {
             var player = await _context.Players
                 .Include(p => p.Phones)
-                .Where(p=>p.Id == playerId)
+                .Where(p => p.Id == playerId)
                 .FirstOrDefaultAsync();
 
             return player == null ? null : _mapper.Map<PlayerDto>(player);

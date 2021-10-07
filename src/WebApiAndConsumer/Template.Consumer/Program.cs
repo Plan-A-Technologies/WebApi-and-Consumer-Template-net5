@@ -18,8 +18,11 @@ namespace Template.Consumer
     /// </summary>
     public class Program
     {
+        /// <summary>
+        /// The connection string name.
+        /// </summary>
         private const string ConnectionStringName = "DbConnection";
-  
+
         /// <summary>
         /// The main.
         /// </summary>
