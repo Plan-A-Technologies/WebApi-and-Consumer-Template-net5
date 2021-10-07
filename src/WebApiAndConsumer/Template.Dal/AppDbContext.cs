@@ -20,6 +20,13 @@ namespace Template.Dal
         public virtual DbSet<PlayerPhone> PlayerPhones { get; set; }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="AppDbContext"/> class.
+        /// </summary>
+        public AppDbContext()
+        {
+        }
+
+        /// <summary>
         /// .ctor
         /// </summary>
         /// <param name="options">DbContextOptions <see cref="DbContextOptions"/></param>

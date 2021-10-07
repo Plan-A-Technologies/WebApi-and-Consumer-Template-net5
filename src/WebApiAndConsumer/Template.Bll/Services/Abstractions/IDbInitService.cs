@@ -10,7 +10,11 @@ namespace Template.Bll.Services.Abstractions
         /// <summary>
         /// DB initialization.
         /// </summary>
-        /// <returns></returns>
         Task InitDb();
+
+        /// <summary>
+        /// Checks the connection to DB.
+        /// </summary>
+        Task<bool> CheckConnection();
     }
 }

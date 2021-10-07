@@ -13,9 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Consumer", "Templa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E0D6F559-39CA-432A-BF8D-FA072CB0B4D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Samples.Producer", "Template.Samples.Producer\Template.Samples.Producer.csproj", "{244FA3AC-E101-4B69-B7C2-0182FC93F653}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Samples.Producer", "Template.Samples.Producer\Template.Samples.Producer.csproj", "{244FA3AC-E101-4B69-B7C2-0182FC93F653}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Shared", "..\Template.Shared\Template.Shared.csproj", "{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Shared", "..\Template.Shared\Template.Shared.csproj", "{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A22E2C8A-35E3-4C12-84A0-433F28B1DD8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Test", "Template.Test\Template.Test.csproj", "{9999A3CF-5A73-4660-84AF-B2CDDF714853}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,12 +51,17 @@ Global
 		{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9999A3CF-5A73-4660-84AF-B2CDDF714853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9999A3CF-5A73-4660-84AF-B2CDDF714853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9999A3CF-5A73-4660-84AF-B2CDDF714853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9999A3CF-5A73-4660-84AF-B2CDDF714853}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{244FA3AC-E101-4B69-B7C2-0182FC93F653} = {E0D6F559-39CA-432A-BF8D-FA072CB0B4D3}
+		{9999A3CF-5A73-4660-84AF-B2CDDF714853} = {A22E2C8A-35E3-4C12-84A0-433F28B1DD8D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {916C3586-FF26-4A13-A428-BE8C2ACCB8CB}

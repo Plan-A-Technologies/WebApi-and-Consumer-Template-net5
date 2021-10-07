@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Template.Bll.Services.Abstractions;
@@ -28,6 +29,12 @@ namespace Template.Bll.Services
         public async Task InitDb()
         {
             await _context.Database.MigrateAsync();
+        }
+
+        /// <inheritdoc/>
+        public async Task<bool> CheckConnection()
+        {
+            return await _context.Database.CanConnectAsync();
         }
     }
 }
