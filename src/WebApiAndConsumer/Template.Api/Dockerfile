@@ -5,7 +5,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["Template.Api/Template.Api.csproj", "Template.Api/"]
-RUN dotnet restore "Template.ApiTemplate.Api.csproj"
+RUN dotnet restore "Template.Api.csproj"
 COPY . .
 WORKDIR "/src/Template.Api"
 RUN dotnet build "Template.Api.csproj" -c Release -o /app/build
