@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Template.Api.Extensions;
 using Template.Dal;
+using Template.Shared.Extensions;
 
 namespace Template.Api
 {
@@ -71,6 +72,8 @@ namespace Template.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseErrorHandling();
 
             app.UseEndpoints(endpoints =>
             {
