@@ -7,7 +7,6 @@
         public const string NotFound = "2000";
         public const string PlayerNotFound = "2001";
 
-
         public const string DataAccess = "3000";
 
         public const string Forbidden = "4000";
