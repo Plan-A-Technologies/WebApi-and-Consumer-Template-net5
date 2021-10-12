@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Template.Shared.Errors;
 using Template.Shared.Exceptions;
+using Template.Shared.Extensions;
 
 namespace Template.Shared.Middlewares
 {
@@ -99,7 +100,7 @@ namespace Template.Shared.Middlewares
                     break;
             }
 
-            _logger.LogError(exception, $"{method}: {path}");
+            _logger.LogError(exception, $"Method: {method}; Path: {path}");
 
             if (string.IsNullOrWhiteSpace(message))
                 message = exception.Message;
