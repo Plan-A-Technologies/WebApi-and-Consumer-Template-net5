@@ -3,7 +3,6 @@ using System.Net;
 using System.Net.Mime;
 using System.Security.Authentication;
 using System.Threading.Tasks;
-using MassTransit.Monitoring.Performance;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -62,51 +61,42 @@ namespace Template.Shared.Middlewares
             var path = context.Request.Path.Value;
             var method = context.Request.Method;
 
-            var code = HttpStatusCode.InternalServerError;
+            HttpStatusCode code;
             string message = string.Empty;
             string innerCode = null;
 
             switch (exception)
             {
                 case NotFoundException nfex:
-                    {
                         code = HttpStatusCode.NotFound;
-                        innerCode = ErrorCodes.NotFound;
+                        innerCode = nfex.ErrorCode;
                         message = nfex.Message;
                         break;
-                    }
                 case ForbiddenException fex:
-                    {
                         code = HttpStatusCode.Forbidden;
-                        innerCode = ErrorCodes.Forbidden;
+                        innerCode = fex.ErrorCode;
                         message = fex.Message;
                         break;
-                    }
                 case ArgumentNullException _:
-                    {
                         code = HttpStatusCode.BadRequest;
                         break;
-                    }
                 case BadRequestException brex:
-                    {
-                        innerCode = ErrorCodes.BadRequest;
-                        message = brex.Message;
                         code = HttpStatusCode.BadRequest;
+                        innerCode = brex.ErrorCode;
+                        message = brex.Message;
                         break;
-                    }
                 case DataAccessException daex:
-                {
-                    innerCode = ErrorCodes.DataAccess;
-                    message = daex.Message;
                     code = HttpStatusCode.InternalServerError;
+                    innerCode = daex.ErrorCode;
+                    message = daex.Message;
                     break;
-                }
                 case UnauthorizedAccessException _:
                 case AuthenticationException _:
-                {
                     code = HttpStatusCode.Unauthorized;
                     break;
-                }
+                default:
+                    code = HttpStatusCode.InternalServerError;
+                    break;
             }
 
             _logger.LogError(exception, $"{method}: {path}");
@@ -115,7 +105,10 @@ namespace Template.Shared.Middlewares
                 message = exception.Message;
 
             var result = JsonConvert.SerializeObject(
-                new ErrorModel(innerCode ?? ErrorModel.ErrorCodeGeneral) { Message = message },
+                new ErrorModel(innerCode ?? ErrorCodes.General)
+                {
+                    Message = message
+                },
                 new JsonSerializerSettings
                 {
                     ContractResolver = new CamelCasePropertyNamesContractResolver()

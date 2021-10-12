@@ -1,4 +1,5 @@
 ﻿using System;
+using Template.Shared.Errors;
 
 namespace Template.Shared.Exceptions
 {
@@ -11,8 +12,9 @@ namespace Template.Shared.Exceptions
         /// <summary>
         /// Initializes a new instance of the <see cref="BadRequestException"/> class.
         /// </summary>
-        /// <param name="ex">The ex.</param>
-        public ForbiddenException(Exception ex) : base("", ex)
+        /// <param name="ex">The exception.</param>
+        /// <param name="errorCode">The error code.</param>
+        public ForbiddenException(Exception ex, string errorCode = ErrorCodes.Forbidden) : base("", ex, errorCode)
         {
 
         }
@@ -21,7 +23,8 @@ namespace Template.Shared.Exceptions
         /// Initializes a new instance of the <see cref="BadRequestException"/> class.
         /// </summary>
         /// <param name="customMessage">The custom message.</param>
-        public ForbiddenException(string customMessage) : base(customMessage)
+        /// <param name="errorCode">The error code.</param>
+        public ForbiddenException(string customMessage, string errorCode = ErrorCodes.Forbidden) : base(customMessage, errorCode)
         {
 
         }
@@ -30,8 +33,9 @@ namespace Template.Shared.Exceptions
         /// Initializes a new instance of the <see cref="BadRequestException"/> class.
         /// </summary>
         /// <param name="customMessage">The custom message.</param>
-        /// <param name="ex">The ex.</param>
-        public ForbiddenException(string customMessage, Exception ex) : base(customMessage, ex)
+        /// <param name="ex">The exception.</param>
+        /// <param name="errorCode">The error code.</param>
+        public ForbiddenException(string customMessage, Exception ex, string errorCode = ErrorCodes.Forbidden) : base(customMessage, ex, errorCode)
         {
 
         }

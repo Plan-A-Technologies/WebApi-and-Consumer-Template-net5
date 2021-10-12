@@ -2,9 +2,16 @@
 {
     public static class ErrorCodes
     {
-        public const string NotFound = "10001";
-        public const string DataAccess = "10002";
-        public const string Forbidden = "10003";
-        public const string BadRequest = "10004";
+        public const string General = "1000";
+
+        public const string NotFound = "2000";
+        public const string PlayerNotFound = "2001";
+
+
+        public const string DataAccess = "3000";
+
+        public const string Forbidden = "4000";
+
+        public const string BadRequest = "5000";
     }
 }
