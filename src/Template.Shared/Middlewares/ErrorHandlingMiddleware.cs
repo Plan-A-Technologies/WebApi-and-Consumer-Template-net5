@@ -10,6 +10,7 @@ using Newtonsoft.Json.Serialization;
 using Template.Shared.Errors;
 using Template.Shared.Exceptions;
 using Template.Shared.Extensions;
+using Template.Shared.Logging;
 
 namespace Template.Shared.Middlewares
 {
@@ -63,7 +64,7 @@ namespace Template.Shared.Middlewares
             var method = context.Request.Method;
 
             HttpStatusCode code;
-            string message = string.Empty;
+            var message = string.Empty;
             string innerCode = null;
 
             switch (exception)
@@ -108,7 +109,8 @@ namespace Template.Shared.Middlewares
             var result = JsonConvert.SerializeObject(
                 new ErrorModel(innerCode ?? ErrorCodes.General)
                 {
-                    Message = message
+                    Message = message,
+                    Details = Logger.GetExceptionMessage(exception, "", 1)
                 },
                 new JsonSerializerSettings
                 {

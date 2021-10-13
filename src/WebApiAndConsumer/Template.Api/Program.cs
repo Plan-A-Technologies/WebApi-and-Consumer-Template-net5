@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -33,7 +34,7 @@ namespace Template.Api
         /// <returns></returns>
         public static async Task Main(string[] args)
         {
-            Log.Logger = Logger.CreateLogger(Configuration);
+            Log.Logger = Logger.CreateLogger(Configuration, Assembly.GetExecutingAssembly().GetName().Name);
 
             try
             {
