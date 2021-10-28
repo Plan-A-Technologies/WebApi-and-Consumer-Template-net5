@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Template.Bll.Dto;
 using Template.Bll.Services.Abstractions;
 using Template.Dal;
 
@@ -15,6 +15,7 @@ namespace Template.Bll.Services
         /// The _context.
         /// </summary>
         private readonly AppDbContext _context;
+
         /// <summary>
         /// The _logger.
         /// </summary>
@@ -38,9 +39,25 @@ namespace Template.Bll.Services
         }
 
         /// <inheritdoc/>
-        public async Task<bool> CheckConnection()
+        public async Task<PingDbDto> CheckConnection()
         {
-            return await _context.Database.CanConnectAsync();
+            var response = new PingDbDto
+            {
+                CanConnect = await _context.Database.CanConnectAsync(),
+                ConnectionSting = _context.Database.GetConnectionString()
+            };
+
+            try
+            {
+                await _context.Database.OpenConnectionAsync();
+                await _context.Database.CloseConnectionAsync();
+            }
+            catch (Exception ex)
+            {
+                response.ExceptionMessage = ex.Message;
+            }
+
+            return response;
         }
     }
 }

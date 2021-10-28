@@ -41,6 +41,7 @@ namespace Template.Api.Controllers
         [ProducesResponseType(typeof(PlayerDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IPlayerDto))]
         public async Task<IActionResult> GetPlayer([FromRoute] Guid playerId)
         {

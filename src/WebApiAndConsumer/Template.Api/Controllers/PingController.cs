@@ -9,9 +9,9 @@ namespace Template.Api.Controllers
     /// <summary>
     /// The player controller.
     /// </summary>
-    [Route("health")]
+    [Route("ping")]
     [ApiController]
-    public class HealthController : ControllerBase
+    public class PingController : ControllerBase
     {
         private readonly IDbInitService _dbInitService;
 
@@ -19,7 +19,7 @@ namespace Template.Api.Controllers
         /// .ctor
         /// </summary>
         /// <param name="dbInitService">DB init service.</param>
-        public HealthController(IDbInitService dbInitService)
+        public PingController(IDbInitService dbInitService)
         {
             _dbInitService = dbInitService ?? throw new ArgumentNullException(nameof(dbInitService));
         }
@@ -35,7 +35,7 @@ namespace Template.Api.Controllers
         public async Task<IActionResult> Get()
 #pragma warning restore 1998
         {
-            return Ok();
+            return Ok("Success");
         }
 
         /// <summary>

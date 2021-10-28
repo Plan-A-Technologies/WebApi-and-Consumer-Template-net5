@@ -40,18 +40,27 @@ namespace Template.Api
         public void ConfigureServices(IServiceCollection services)
         {
             var dbConnectionString = Configuration.GetConnectionString(ConnectionStringName);
-      
+
             services.AddServices();
+
+            // Add Cors
+            services.AddCors();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddDbContext<AppDbContext>(x =>
                 x.UseSqlServer(dbConnectionString), ServiceLifetime.Transient);
 
-            services.AddControllers();
+            services.AddControllers()
+                //Set date time format you need.
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
+                    options.SerializerSettings.DateFormatString = "MM'/'dd'/'yyyy' 'HH':'mm':'ssZ";
+                });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Template.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Template.Api", Version = "v1"});
             });
         }
 
@@ -69,16 +78,20 @@ namespace Template.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Template.Api v1"));
             }
 
+            // global cors policy
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
+
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseErrorHandling();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }
