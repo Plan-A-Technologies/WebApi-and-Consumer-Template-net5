@@ -52,11 +52,11 @@ namespace Template.Api
                 x.UseSqlServer(dbConnectionString), ServiceLifetime.Transient);
 
             services.AddControllers()
-                //Set date time format you need.
+                //Set date time format to UTC.
                 .AddNewtonsoftJson(options =>
                 {
                     options.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
-                    options.SerializerSettings.DateFormatString = "MM'/'dd'/'yyyy' 'HH':'mm':'ssZ";
+                    options.SerializerSettings.DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'";
                 });
             services.AddSwaggerGen(c =>
             {
