@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Template.Bll.Dto;
 
 namespace Template.Bll.Services.Abstractions
 {
@@ -15,6 +16,6 @@ namespace Template.Bll.Services.Abstractions
         /// <summary>
         /// Checks the connection to DB.
         /// </summary>
-        Task<bool> CheckConnection();
+        Task<PingDbDto> CheckConnection();
     }
 }

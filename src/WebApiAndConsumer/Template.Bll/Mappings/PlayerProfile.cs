@@ -21,6 +21,7 @@ namespace Template.Bll.Mappings
             CreateMap<IPlayerDto, Player>();
             CreateMap<PlayerPhone, PlayerPhoneDto>();
             CreateMap<PlayerPhoneDto, PlayerPhone>();
+
         }
     }
 }
