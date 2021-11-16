@@ -18,6 +18,7 @@ namespace Template.Api.Extensions
         {
             services.AddTransient<IPlayerService, PlayerService>();
             services.AddTransient<IDbInitService, DbInitService>();
+            services.AddTransient<IUserAuthenticationService, UserAuthenticationService>();
             return services;
         }
     }

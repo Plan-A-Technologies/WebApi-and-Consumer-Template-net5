@@ -1,4 +1,5 @@
 ﻿using System;
+using Template.Shared.DtoContracts.Base;
 
 namespace Template.Shared.DtoContracts
 {

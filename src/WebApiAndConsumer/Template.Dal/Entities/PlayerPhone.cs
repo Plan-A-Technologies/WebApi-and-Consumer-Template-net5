@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using Template.Shared.EFCore.Entities;
 
 namespace Template.Dal.Entities
 {
@@ -7,13 +8,8 @@ namespace Template.Dal.Entities
     /// The player phone entity.
     /// </summary>
     [Table("PlayerPhones", Schema = "dbo")]
-    public class PlayerPhone
+    public class PlayerPhone : BaseEntity<Guid>
     {
-        /// <summary>
-        /// Player phone number identifier; unique to the player only; identifies a specific phone record for the player.
-        /// </summary>
-        public Guid Id { get; set; }
-
         /// <summary>
         /// Phone number type.
         /// </summary>

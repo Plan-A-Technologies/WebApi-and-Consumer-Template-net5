@@ -7,7 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Template.Api.Extensions;
+using Template.Bll.Assets;
 using Template.Dal;
+using Template.Shared.Extensions.DependencyInjection;
 
 namespace Template.Api
 {
@@ -46,6 +48,7 @@ namespace Template.Api
 
             services.AddDbContext<AppDbContext>(x =>
                 x.UseSqlServer(dbConnectionString), ServiceLifetime.Transient);
+            services.AddEntityAuditProvider<EntityAuditProvider>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
