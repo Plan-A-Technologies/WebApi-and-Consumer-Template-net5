@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using Template.Shared.EFCore.Entities;
 
 namespace Template.Dal.Entities
 {
     /// <summary>
     /// The player model.
     /// </summary>
-    public class Player
+    [Table("Players", Schema = "dbo")]
+    public class Player : BaseEntity<Guid>
     {
-        /// <summary>
-        /// The user identifier.
-        /// </summary>
-        public Guid Id { get; set; }
-
         /// <summary>
         /// Player’s title. For example, Mr, Mrs, etc.
         /// </summary>

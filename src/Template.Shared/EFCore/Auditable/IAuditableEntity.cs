@@ -1,28 +1,23 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Template.Shared.DtoContracts
+namespace Template.Shared.EFCore.Auditable
 {
     /// <summary>
-    /// Base dto.
+    /// Auditable Entity
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface IBaseDto<T>
+    public interface IAuditableEntity
     {
-        /// <summary>
-        /// Gets or sets the id.
-        /// </summary>
-        /// <value>
-        /// The id.
-        /// </value>
-        public T Id { get; set; }
-
         /// <summary>
         /// Gets or sets the created by.
         /// </summary>
         /// <value>
         /// The created by.
         /// </value>
-        public string CreatedBy { get; set; }
+        int CreatedBy { get; set; }
 
         /// <summary>
         /// Gets or sets the created at.
@@ -30,7 +25,7 @@ namespace Template.Shared.DtoContracts
         /// <value>
         /// The created at.
         /// </value>
-        public DateTime CreatedAt { get; set; }
+        DateTime CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or sets the updated by.
@@ -38,7 +33,7 @@ namespace Template.Shared.DtoContracts
         /// <value>
         /// The updated by.
         /// </value>
-        public string UpdatedBy { get; set; }
+        int UpdatedBy { get; set; }
 
         /// <summary>
         /// Gets or sets the updated at.
@@ -46,6 +41,6 @@ namespace Template.Shared.DtoContracts
         /// <value>
         /// The updated at.
         /// </value>
-        public DateTime UpdatedAt { get; set; }
+        DateTime UpdatedAt { get; set; }
     }
 }

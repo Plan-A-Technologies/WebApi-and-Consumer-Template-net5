@@ -6,10 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Extensions" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="MassTransit" />
       <None Remove="MassTransit.RabbitMQ" />
       <None Remove="MassTransit.AspNetCore" />
@@ -18,5 +14,6 @@
       <PackageReference Include="MassTransit" Version="7.2.2" />
       <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.2" />
       <PackageReference Include="MassTransit.AspNetCore" Version="7.2.2" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
     </ItemGroup>
 </Project>

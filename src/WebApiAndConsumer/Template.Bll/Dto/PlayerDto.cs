@@ -44,12 +44,12 @@ namespace Template.Bll.Dto
         /// <inheritdoc/>
         public Guid Id { get; set; }
         /// <inheritdoc/>
-        public string CreatedBy { get; set; }
+        public int CreatedBy { get; set; }
         /// <inheritdoc/>
         public DateTime CreatedAt { get; set; }
         /// <inheritdoc/>
-        public string UpdatedBy { get; set; }
+        public int? UpdatedBy { get; set; }
         /// <inheritdoc/>
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

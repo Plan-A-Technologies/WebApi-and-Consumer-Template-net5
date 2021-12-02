@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Template.Shared.DtoContracts.Base;
 
 namespace Template.Shared.DtoContracts
 {
