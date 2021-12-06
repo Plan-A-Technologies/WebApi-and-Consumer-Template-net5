@@ -23,7 +23,7 @@ namespace Template.Samples.Producer
         readonly IServiceProvider _serviceProvider;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Worker"/> class.
+        /// Initializes a new instance of the <see cref="Producer"/> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="serviceProvider">The service provider.</param>

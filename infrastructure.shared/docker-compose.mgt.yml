@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  ps-sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: ps-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=!Qqq12345
+      - MSSQL_PID=Express
+    ports:
+      - '1433:1433'
+
+  ps-elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    container_name: ps-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1024M -Xmx1024M"
+      - network.host=_eth0_
+    volumes:
+      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./config/users:/usr/share/elasticsearch/config/users
+      - ./config/users_roles:/usr/share/elasticsearch/config/users_roles
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  ps-rabbitmq:
+    image: rabbitmq:3.9-management
+    container_name: ps-rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  ps-management:
+    container_name: ps-mgt
+    image: ps-mgt
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    command: ./wait-for-it.sh ps-sqlserver:1433 -t 60 -- ./Api
+    depends_on:
+      - ps-sqlserver
+      - ps-elasticsearch
+    ports:
+      - 5001:5000

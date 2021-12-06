@@ -2,6 +2,9 @@ using System;
 
 namespace Template.Shared.Helpers
 {
+    /// <summary>
+    /// Log Message Helper.
+    /// </summary>
     public static class LogMessageHelper
     {
         /// <summary>

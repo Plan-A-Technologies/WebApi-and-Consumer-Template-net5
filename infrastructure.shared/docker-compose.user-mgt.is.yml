@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  ps-sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: ps-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=!Qqq12345
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+
+  ps-elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    container_name: ps-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1024M -Xmx1024M"
+      - network.host=_eth0_
+    volumes:
+      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./config/users:/usr/share/elasticsearch/config/users
+      - ./config/users_roles:/usr/share/elasticsearch/config/users_roles
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  ps-rabbitmq:
+    image: rabbitmq:3.9-management
+    container_name: ps-rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  ps-user-management:
+    container_name: ps-user-mgt
+    image: ps-user-mgt
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    depends_on:
+      - ps-sqlserver
+    ports:
+      - "5001:5000"
+
+  ps-identityserver:
+    container_name: ps-is
+    image: ps-is
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Azure
+    depends_on:
+      - ps-sqlserver
+    ports:
+      - "7778:5000"
+
+  ps-identityserver-consumer:
+    container_name: ps-is-consumer
+    image: ps-is-consumer
+    environment:
+      - DOTNET_ENVIRONMENT=Azure
+    depends_on:
+      - ps-sqlserver    

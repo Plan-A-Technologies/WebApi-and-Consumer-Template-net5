@@ -8,6 +8,8 @@ using Template.Bll.Services.Abstractions;
 using Template.Dal;
 using Template.Dal.Entities;
 using Template.Shared.DtoContracts;
+using Template.Shared.Errors.Assets;
+using Template.Shared.Exceptions;
 
 namespace Template.Bll.Services
 {
@@ -57,14 +59,16 @@ namespace Template.Bll.Services
         }
 
         /// <inheritdoc/>
-        public async Task<IPlayerDto> GetPlayer(Guid playerId)
+        public async Task<IPlayerDto> GetPlayerById(Guid playerId)
         {
             var player = await _context.Players
                 .Include(p => p.Phones)
                 .Where(p => p.Id == playerId)
                 .FirstOrDefaultAsync();
 
-            return player == null ? null : _mapper.Map<PlayerDto>(player);
+            return player == null
+                ? throw new NotFoundException($"Player was not found with id {playerId}", ErrorCodes.TemplateErrors.PlayersErrors.NotFound)
+                : _mapper.Map<PlayerDto>(player);
         }
     }
 }

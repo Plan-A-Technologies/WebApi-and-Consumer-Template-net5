@@ -13,9 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Consumer", "Templa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E0D6F559-39CA-432A-BF8D-FA072CB0B4D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Samples.Producer", "Template.Samples.Producer\Template.Samples.Producer.csproj", "{244FA3AC-E101-4B69-B7C2-0182FC93F653}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Samples.Producer", "Template.Samples.Producer\Template.Samples.Producer.csproj", "{244FA3AC-E101-4B69-B7C2-0182FC93F653}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Shared", "..\Template.Shared\Template.Shared.csproj", "{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Shared", "..\Template.Shared\Template.Shared.csproj", "{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Executables", "Executables", "{4E4BB80D-71BB-4DD7-A506-B84619BEE1A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Internal.Shared", "Template.Internal.Shared\Template.Internal.Shared.csproj", "{CD96EBBE-7C3C-4D68-AD88-255186CFF773}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,11 +51,17 @@ Global
 		{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFB00400-77E6-4E26-83AB-EBD2F28E7A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD96EBBE-7C3C-4D68-AD88-255186CFF773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD96EBBE-7C3C-4D68-AD88-255186CFF773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD96EBBE-7C3C-4D68-AD88-255186CFF773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD96EBBE-7C3C-4D68-AD88-255186CFF773}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{C95EC1AA-4526-4888-9653-4193A38A0123} = {4E4BB80D-71BB-4DD7-A506-B84619BEE1A5}
+		{C59540DC-2088-4777-913F-4963CFC7573D} = {4E4BB80D-71BB-4DD7-A506-B84619BEE1A5}
 		{244FA3AC-E101-4B69-B7C2-0182FC93F653} = {E0D6F559-39CA-432A-BF8D-FA072CB0B4D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

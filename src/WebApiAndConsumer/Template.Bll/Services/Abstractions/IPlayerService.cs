@@ -21,6 +21,6 @@ namespace Template.Bll.Services.Abstractions
         /// </summary>
         /// <param name="playerId"></param>
         /// <returns>Player entity.</returns>
-        Task<IPlayerDto> GetPlayer(Guid playerId);
+        Task<IPlayerDto> GetPlayerById(Guid playerId);
     }
 }
