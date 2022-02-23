@@ -5,6 +5,10 @@ using Template.Shared.EFCore.Auditable;
 
 namespace Template.Shared.EFCore
 {
+    /// <summary>
+    /// Auditable Db Context.
+    /// </summary>
+    /// <seealso cref="Microsoft.EntityFrameworkCore.DbContext" />
     public class AuditableDbContext : DbContext
     {
         /// <summary>
@@ -13,7 +17,7 @@ namespace Template.Shared.EFCore
         private readonly IEntityAuditProvider _entityAuditProvider;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExtendedDbContext"/> class.
+        /// Initializes a new instance of the <see cref="AuditableDbContext"/> class.
         /// </summary>
         public AuditableDbContext() { }
 

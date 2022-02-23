@@ -23,7 +23,7 @@ namespace Template.Bll.Assets
         /// <inheritdoc/>
         public int GetAuditAuthorKey()
         {
-            return _userAuthenticationService.GetUserId().GetAwaiter().GetResult();
+            return _userAuthenticationService.GetUserId();
         }
 
         /// <inheritdoc/>

@@ -54,7 +54,7 @@ namespace Template.Consumer
 
                     services.AddMassTransit(x =>
                     {
-                        x.AddConsumer<PlayerConsumer>();
+                        x.AddConsumers(typeof(PlayerConsumer).Assembly);
 
                         x.AddRequestClient<IPlayerMessage>(TimeSpan.FromSeconds(10));
 

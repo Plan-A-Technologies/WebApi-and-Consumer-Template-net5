@@ -1,0 +1,14 @@
+trigger:
+  - dev
+  - main
+
+resources:
+  repositories:
+    - repository: Template.Infrastructure
+      type: git
+      name: Template.Infrastructure
+
+jobs:
+  - template: AzureDevops.Pipelines/template-publish-pipeline.yml@Template.Infrastructure
+    parameters:
+      dockerRepositoryName: 'template/webapiandconsumer'

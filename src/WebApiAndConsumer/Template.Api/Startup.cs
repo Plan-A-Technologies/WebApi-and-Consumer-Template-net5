@@ -8,7 +8,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Template.Api.Extensions;
 using Template.Bll.Assets;
+using Template.Bll.Services;
 using Template.Dal;
+using Template.Internal.Shared;
+using Template.Shared.Config;
+using Template.Shared.Constants;
+using Template.Shared.EFCore.Extensions;
+using Template.Shared.Extensions;
 using Template.Shared.Extensions.DependencyInjection;
 
 namespace Template.Api
@@ -18,7 +24,7 @@ namespace Template.Api
     /// </summary>
     public class Startup
     {
-        private const string ConnectionStringName = "DbConnection";
+        private readonly IConfiguration _configuration;
 
         /// <summary>
         /// .ctor
@@ -26,13 +32,8 @@ namespace Template.Api
         /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        /// <summary>
-        /// Configuration
-        /// </summary>
-        public IConfiguration Configuration { get; }
 
         /// <summary>
         /// Configure services
@@ -40,21 +41,28 @@ namespace Template.Api
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            var dbConnectionString = Configuration.GetConnectionString(ConnectionStringName);
-      
-            services.AddServices();
+            //Add bll services.
+            services.AddBllServices();
 
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //Add masstransit services.
+            var rabbitMqOptions = _configuration.GetSection(nameof(RabbitMqOptions)).Get<RabbitMqOptions>();
+            services.AddMassTransitServices(rabbitMqOptions);
 
-            services.AddDbContext<AppDbContext>(x =>
-                x.UseSqlServer(dbConnectionString), ServiceLifetime.Transient);
-            services.AddEntityAuditProvider<EntityAuditProvider>();
+            //Add validators.
+            services.AddValidators();
 
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Template.Api", Version = "v1" });
-            });
+            //Add db context.
+            var dbConnectionString = _configuration.GetConnectionString(GlobalConstants.DbConnectionStringName);
+            services.AddDbContext<AppDbContext>(x => x.UseSqlServer(dbConnectionString), ServiceLifetime.Transient);
+            services.AddEntityAuditableProvider<EntityAuditProvider>();
+
+            //Add services like:
+            // - Cors.
+            // - auto mapper.
+            // - Newtonsoft json serializer and DateFormatString.
+            // - Fluent validation.
+            // - Add authorization.
+            services.ConfigureServices(_configuration, GlobalConstants.TemplateApi);
         }
 
         /// <summary>
@@ -67,18 +75,16 @@ namespace Template.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Template.Api v1"));
             }
 
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            //Configure application:
+            // - use cors policy.
+            // - Use swagger.
+            // - Use Authentication.
+            // - User routing.
+            // - Use Error Handling.
+            // - UseEndpoints using controllers.
+            app.ConfigureApplication(GlobalConstants.TemplateApi);
         }
     }
 }

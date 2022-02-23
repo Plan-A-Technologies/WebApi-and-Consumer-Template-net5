@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Template.Api.ViewModels.Request;
+using Template.Api.ViewModels.Response;
 using Template.Bll.Dto;
 using Template.Bll.Services.Abstractions;
 using Template.Shared.DtoContracts;
@@ -38,20 +40,20 @@ namespace Template.Api.Controllers
         /// <response code="404">Player not found</response>
         [HttpGet("{playerId}")]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(PlayerDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(PlayerResponseViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IPlayerDto))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlayerResponseViewModel))]
         public async Task<IActionResult> GetPlayer([FromRoute] Guid playerId)
         {
-            IPlayerDto playerDto = await _playerService.GetPlayer(playerId);
+            IPlayerDto playerDto = await _playerService.GetPlayerById(playerId);
 
             if (playerDto == null)
             {
                 return NotFound($"Player with Id:{playerId} was not found.");
             }
 
-            return Ok(playerDto);
+            return Ok(_mapper.Map<PlayerResponseViewModel>(playerDto));
         }
 
         /// <summary>
@@ -62,12 +64,12 @@ namespace Template.Api.Controllers
         [HttpPost]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(IPlayerDto))]
-        public async Task<IActionResult> CreatePlayer([FromBody] PlayerDto request)
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(PlayerResponseViewModel))]
+        public async Task<IActionResult> CreatePlayer([FromBody] CreatePlayerRequestViewModel request)
         {
-            var player = await _playerService.CreatePlayer(request);
+            var playerDto = await _playerService.CreatePlayer(_mapper.Map<IPlayerDto>(request));
 
-            return CreatedAtAction(nameof(GetPlayer), new { playerId = player.Id }, player);
+            return CreatedAtAction(nameof(GetPlayer), new { playerId = playerDto.Id }, _mapper.Map<PlayerResponseViewModel>(playerDto));
         }
     }
 }

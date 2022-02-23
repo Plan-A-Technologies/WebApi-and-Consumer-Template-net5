@@ -1,0 +1,12 @@
+trigger:
+  - dev
+  - main
+
+resources:
+  repositories:
+    - repository: Template.Infrastructure
+      type: git
+      name: Template.Infrastructure
+
+jobs:
+  - template: AzureDevops.Pipelines/template-nuget-pipeline.yml@Template.Infrastructure

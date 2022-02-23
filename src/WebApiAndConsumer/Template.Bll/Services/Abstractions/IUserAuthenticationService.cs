@@ -11,6 +11,6 @@ namespace Template.Bll.Services.Abstractions
         /// Gets the user identifier.
         /// </summary>
         /// <returns>User id</returns>
-        Task<int> GetUserId();
+        int GetUserId();
     }
 }

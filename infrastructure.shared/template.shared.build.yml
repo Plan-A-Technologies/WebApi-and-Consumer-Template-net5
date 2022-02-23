@@ -1,0 +1,12 @@
+resources:
+  repositories:
+    - repository: Template.Infrastructure
+      type: git
+      name: Template.Infrastructure
+
+jobs:
+  - template: AzureDevops.Pipelines/template-pr-build-pipeline.yml@Template.Infrastructure
+    parameters:
+      sonarQubeProjectKey: planatechnologies-template_Template.Shared
+      sonarQubeOganization: planatechnologies-template
+      sonarQubeProjectName: Template.Shared
